@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% block javascripts%}
+{% endblock %}
+{% block body %}
+<div class="container">
+<h1 class="create">Page de connexion</h1>
+
+<form action="{{path('security_login')}}" method="post" id="contactform">
+
+     <div class="spacer">
+
+        <input class="input_form" placeholder="Veuillez saisir votre adresse email..." required name="_username" type="text" id="username">
+
+     </div>
+
+     <div class="spacer">
+
+        <input class="input_form" placeholder="Veuillez saisir votre mot de passe" required name="_password" type="password" id="password">
+
+     </div>
+
+     <div  class="spacer">
+
+         <button type="submit" id="submit_butt">Connecter</button>
+       
+     </div>
+
+</form>
+
+
+<script>
+        $("#submit_butt").click(function () {
+            e.preventDefault();
+            var email = $("#username").val();
+            var password = $("#password").val();
+            $.ajax
+
+                ({
+
+                    type: "POST",
+
+                    url: "http://localhost:8000/connexion",
+
+                    data: {email: email, password : password },
+
+                    cache:false,
+                    
+                    success: function (data) { 
+                        console.log("ok");
+                         }
+                });
+        });
+
+</script> 
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
